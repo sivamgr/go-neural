@@ -16,7 +16,7 @@ Create new network:
 
 ```go
 
-  import "github.com/NOX73/go-neural"
+  import "github.com/sivamgr/go-neural"
 
   //...
 
@@ -36,7 +36,7 @@ Create new network:
 Save to file:
 
 ```go
-  import "github.com/NOX73/go-neural/persist"
+  import "github.com/sivamgr/go-neural/persist"
 
   persist.ToFile("/path/to/file.json", network)
 ```
@@ -44,7 +44,7 @@ Save to file:
 Load from file:
 
 ```go
-  import "github.com/NOX73/go-neural/persist"
+  import "github.com/sivamgr/go-neural/persist"
 
   network := persist.FromFile("/path/to/file.json")
 ```
@@ -52,7 +52,7 @@ Load from file:
 # Learning
 
 ```go
-  import "github.com/NOX73/go-neural/learn"
+  import "github.com/sivamgr/go-neural/learn"
 
   var input, idealOutput []float64
   // Learning speed [0..1]
@@ -83,5 +83,5 @@ For concurrent learn, calculate & dump neural network.
 
 # Live example
 
-Dirty live example: [https://github.com/NOX73/go-neural-play]
+Dirty live example: [https://github.com/sivamgr/go-neural-play]
 
