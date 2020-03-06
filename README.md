@@ -1,12 +1,13 @@
 go-neural
 ==============
+Forked from github.com/NOX73/go-neural
 
 # Install
 
 ```
-  go get github.com/NOX73/go-neural
-  go get github.com/NOX73/go-neural/persist
-  go get github.com/NOX73/go-neural/learn
+  go get github.com/sivamgr/go-neural
+  go get github.com/sivamgr/go-neural/persist
+  go get github.com/sivamgr/go-neural/learn
 ```
 
 # Neural Network

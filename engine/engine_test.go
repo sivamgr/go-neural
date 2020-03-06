@@ -1,10 +1,11 @@
 package engine
 
 import (
-	"github.com/NOX73/go-neural"
-	"github.com/NOX73/go-neural/persist"
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/sivamgr/go-neural"
+	"github.com/sivamgr/go-neural/persist"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestBasic(t *testing.T) {

@@ -2,8 +2,9 @@ package persist
 
 import (
 	"encoding/json"
-	"github.com/NOX73/go-neural"
 	"io/ioutil"
+
+	"github.com/sivamgr/go-neural"
 )
 
 type Weights [][][]float64

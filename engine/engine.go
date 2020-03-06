@@ -1,15 +1,15 @@
 package engine
 
 import (
-	"github.com/NOX73/go-neural"
-	"github.com/NOX73/go-neural/learn"
-	"github.com/NOX73/go-neural/persist"
+	"github.com/sivamgr/go-neural"
+	"github.com/sivamgr/go-neural/learn"
+	"github.com/sivamgr/go-neural/persist"
 )
 
 const (
 	learnChannelCapacity = 5
-	calcChannelCapacity = 5
-	dumpChannelCapacity = 5
+	calcChannelCapacity  = 5
+	dumpChannelCapacity  = 5
 )
 
 type Engine interface {
@@ -21,7 +21,7 @@ type Engine interface {
 
 type engine struct {
 	Network          *neural.Network
-	LearnChannel      chan *request
+	LearnChannel     chan *request
 	CalculateChannel chan *request
 	DumpChannel      chan *request
 }
@@ -31,7 +31,7 @@ type request []interface{}
 func New(n *neural.Network) Engine {
 	e := &engine{
 		Network:          n,
-		LearnChannel:      make(chan *request, learnChannelCapacity),
+		LearnChannel:     make(chan *request, learnChannelCapacity),
 		CalculateChannel: make(chan *request, calcChannelCapacity),
 		DumpChannel:      make(chan *request, dumpChannelCapacity),
 	}
