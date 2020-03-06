@@ -1,7 +1,9 @@
 package neural
 
-import "fmt"
-import "math/rand"
+import (
+	"fmt"
+	"math/rand"
+)
 
 func NewNetwork(in int, layers []int) *Network {
 	n := &Network{
@@ -15,6 +17,7 @@ func NewNetwork(in int, layers []int) *Network {
 type Network struct {
 	Enters []*Enter
 	Layers []*Layer
+	Deltas [][]float64
 	Out    []float64 `json:"-"`
 }
 
@@ -24,6 +27,14 @@ func (n *Network) init(in int, layers []int, aFunc ActivationFunction) {
 	n.ConnectLayers()
 	n.ConnectEnters()
 	n.SetActivationFunction(aFunc)
+	n.initDeltas()
+}
+
+func (n *Network) initDeltas() {
+	n.Deltas = make([][]float64, len(n.Layers))
+	for i, l := range n.Layers {
+		n.Deltas[i] = make([]float64, len(l.Neurons))
+	}
 }
 
 func (n *Network) initLayers(layers []int) {

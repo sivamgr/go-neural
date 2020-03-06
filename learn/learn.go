@@ -17,34 +17,28 @@ func Learn(n *neural.Network, in, ideal []float64, speed float64) {
 
 func Backpropagation(n *neural.Network, in, ideal []float64, speed float64) {
 	n.Calculate(in)
-
-	deltas := make([][]float64, len(n.Layers))
-
 	last := len(n.Layers) - 1
 	l := n.Layers[last]
-	deltas[last] = make([]float64, len(l.Neurons))
-	for i, n := range l.Neurons {
-		deltas[last][i] = n.Out * (1 - n.Out) * (ideal[i] - n.Out)
+	for i, neu := range l.Neurons {
+		n.Deltas[last][i] = neu.Out * (1 - neu.Out) * (ideal[i] - neu.Out)
 	}
 
 	for i := last - 1; i >= 0; i-- {
 		l := n.Layers[i]
-		deltas[i] = make([]float64, len(l.Neurons))
-		for j, n := range l.Neurons {
-
+		for j, neu := range l.Neurons {
 			var sum float64 = 0
-			for k, s := range n.OutSynapses {
-				sum += s.Weight * deltas[i+1][k]
+			for k, s := range neu.OutSynapses {
+				sum += s.Weight * n.Deltas[i+1][k]
 			}
 
-			deltas[i][j] = n.Out * (1 - n.Out) * sum
+			n.Deltas[i][j] = neu.Out * (1 - neu.Out) * sum
 		}
 	}
 
 	for i, l := range n.Layers {
-		for j, n := range l.Neurons {
-			for _, s := range n.InSynapses {
-				s.Weight += speed * deltas[i][j] * s.In
+		for j, neu := range l.Neurons {
+			for _, s := range neu.InSynapses {
+				s.Weight += speed * n.Deltas[i][j] * s.In
 			}
 		}
 	}
